@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h1 id="Judul">Selamat Datang</h1> 
+   <h1>Selamat Datang</h1>
+   <h1 id="warna">Ini Warna Purple</h1>
+   <h1 id="hi">klik dibawah jika kamu bersyukur hari ini</h1>
+
+   <!-- input warna untuk user -->
+   <label>Pilih Warna Kamu : </label>
+   <input type="color" id="pilihWarna">
+   <button onclick="ubah()">Klik disini</button>
+
+   <script>
+    // Default change saat halaman dibuka
+    document.getElementById("Judul").innerHTML = "Halo, mahasiswa!";
+    document.getElementById("warna").style.color = "#DA70D6";
+
+    // Array warna untuk cycling (warna berputar setiap klik)
+    let warnaList = ["#ff1493", "#00bfff", "#32cd32", "#ffa500", "#8a2be2", "#ff4500"];
+    let index = 0;
+
+    function ubah() {
+
+        // cek apakah user memilih warna sendiri di input
+        let userWarna = document.getElementById("pilihWarna").value;
+
+        document.getElementById("hi").innerHTML = "yes, terimakasih, alhamdulillah sahabat";
+
+        // Jika user memilih warna → warna user dipakai
+        if(userWarna){
+            document.getElementById("hi").style.color = userWarna;
+        } 
+        else {
+            // jika tidak → warna berubah otomatis (cycling)
+            document.getElementById("hi").style.color = warnaList[index];
+            index++;
+            if(index >= warnaList.length) index = 0; // agar looping kembali ke awal
+        }
+    }
+   </script>
+</body>
+</html>
